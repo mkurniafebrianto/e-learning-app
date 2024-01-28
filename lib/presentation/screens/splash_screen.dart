@@ -1,16 +1,16 @@
 import 'package:e_learning/core/values/colors.dart';
 import 'package:e_learning/core/values/images.dart';
-import 'package:e_learning/presentation/pages/login/login_screen.dart';
+import 'package:e_learning/presentation/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3)).then((value) =>

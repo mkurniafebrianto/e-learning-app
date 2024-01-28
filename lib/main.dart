@@ -1,5 +1,5 @@
 import 'package:e_learning/core/values/colors.dart';
-import 'package:e_learning/presentation/pages/splash/splash_page.dart';
+import 'package:e_learning/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: AppColors.background,
       ),
-      home: const SplashPage(),
+      home: const SplashScreen(),
     );
   }
 }

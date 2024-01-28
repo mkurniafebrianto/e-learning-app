@@ -1,4 +1,4 @@
-import 'package:e_learning/presentation/pages/home/home_screen.dart';
+import 'package:e_learning/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignInLoginButton extends StatelessWidget {
