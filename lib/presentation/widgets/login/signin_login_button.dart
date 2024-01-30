@@ -1,3 +1,4 @@
+import 'package:e_learning/core/values/colors.dart';
 import 'package:e_learning/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,10 @@ class SignInLoginButton extends StatelessWidget {
         backgroundColor: MaterialStateProperty.all(
           isGoogleSignIn ? Colors.white : Colors.black,
         ),
+        elevation: const MaterialStatePropertyAll(2),
+        surfaceTintColor: isGoogleSignIn
+            ? const MaterialStatePropertyAll(AppColors.background)
+            : const MaterialStatePropertyAll(Colors.black),
       ),
       onPressed: () {
         Navigator.of(context).pushReplacement(

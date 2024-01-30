@@ -7,9 +7,15 @@ import 'package:e_learning/presentation/widgets/home/home_course_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int currentPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +32,7 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: AppColors.background,
           elevation: 0,
+          surfaceTintColor: AppColors.background,
           title: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -71,34 +78,40 @@ class HomeScreen extends StatelessWidget {
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
           ),
-          child: BottomNavigationBar(
-            items: [
-              BottomNavigationBarItem(
+          child: NavigationBar(
+            onDestinationSelected: (int index) {
+              setState(() {
+                currentPageIndex = index;
+              });
+            },
+            indicatorColor: Colors.amber,
+            selectedIndex: currentPageIndex,
+            destinations: [
+              NavigationDestination(
                 icon: Image.asset(
                   'assets/images/home-icon.png',
                 ),
                 label: 'Home',
               ),
-              BottomNavigationBarItem(
-                icon: Image.asset(
-                  'assets/images/profile-icon.png',
-                ),
+              const NavigationDestination(
+                icon: Icon(Icons.person_2_rounded),
                 label: 'Profile',
               ),
             ],
             backgroundColor: Colors.white,
-            iconSize: 25,
+            height: 75,
+            elevation: 0,
           ),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
           child: Center(
-            child: Column(
-              children: [
-                const HomeBanner(),
-                const SizedBox(height: 3),
-                Expanded(
-                  child: Column(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const HomeBanner(),
+                  const SizedBox(height: 3),
+                  Column(
                     children: [
                       BlocBuilder<CourseBloc, CourseState>(
                         builder: (context, state) {
@@ -138,9 +151,9 @@ class HomeScreen extends StatelessWidget {
                         },
                       ),
                     ],
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
