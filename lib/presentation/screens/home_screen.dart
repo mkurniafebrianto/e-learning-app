@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 currentPageIndex = index;
               });
             },
-            indicatorColor: Colors.amber,
+            indicatorColor: Colors.white30,
             selectedIndex: currentPageIndex,
             destinations: [
               NavigationDestination(
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
             backgroundColor: Colors.white,
-            height: 75,
+            height: 70,
             elevation: 0,
           ),
         ),

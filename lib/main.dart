@@ -19,6 +19,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         scaffoldBackgroundColor: AppColors.background,
+        navigationBarTheme: const NavigationBarThemeData(
+          labelTextStyle: MaterialStatePropertyAll(
+            TextStyle(
+                fontSize: 14,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w600),
+          ),
+        ),
       ),
       home: const SplashScreen(),
     );
