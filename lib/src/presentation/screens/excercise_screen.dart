@@ -4,6 +4,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/excercise/excercise_cubit.dart';
+import '../widgets/excercises_section_widget.dart';
+import '../widgets/no_excercise_section_widget.dart';
 
 class ExcerciseScreen extends StatefulWidget {
   final String courseId;
@@ -40,6 +42,7 @@ class _ExcerciseScreenState extends State<ExcerciseScreen> {
               fontSize: 18,
               fontWeight: FontWeight.w700),
         ),
+        centerTitle: false,
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(
@@ -55,62 +58,11 @@ class _ExcerciseScreenState extends State<ExcerciseScreen> {
         body: BlocBuilder<ExcerciseCubit, ExcerciseState>(
           builder: (context, state) {
             if (state is GetExcerciseSuccess) {
-              return GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 1.25,
-                ),
-                shrinkWrap: true,
-                itemCount: state.excerciseList.length,
-                itemBuilder: (context, index) {
-                  final excercise = state.excerciseList[index];
-
-                  return Container(
-                    margin: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 53,
-                            height: 53,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF3F7F8),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Image.network(
-                                excercise.icon ?? '',
-                                errorBuilder: (context, error, stackTrace) =>
-                                    const SizedBox.shrink(),
-                              ),
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                excercise.exerciseTitle ?? '',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              Text(
-                                  '${excercise.jumlahDone}/${excercise.jumlahSoal} Soal'),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              );
+              if (state.excerciseList.isEmpty) {
+                return const NoExcerciseSectionWidget();
+              }
+              return ExcercisesSectionWidget(
+                  excerciseList: state.excerciseList);
             } else if (state is GetExcerciseError) {
               return Center(
                 child: Text(state.errorMessage ?? 'Something went wrong'),

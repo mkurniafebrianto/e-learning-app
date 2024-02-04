@@ -19,9 +19,3 @@ final class GetExcerciseError extends ExcerciseState {
 
   GetExcerciseError({required this.errorMessage});
 }
-
-final class GetCourseId extends ExcerciseState {
-  final CourseData course;
-
-  GetCourseId({required this.course});
-}

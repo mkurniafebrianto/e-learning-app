@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_learning/src/domain/entities/course_model.dart';
 import 'package:e_learning/src/domain/usecases/get_excercises_usecase.dart';
 import 'package:meta/meta.dart';
 

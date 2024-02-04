@@ -7,7 +7,10 @@ import 'course_card.dart';
 class HomeCourseList extends StatelessWidget {
   final List<CourseData> courses;
 
-  const HomeCourseList({super.key, required this.courses});
+  const HomeCourseList({
+    super.key,
+    required this.courses,
+  });
 
   @override
   Widget build(BuildContext context) {

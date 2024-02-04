@@ -21,6 +21,7 @@ class CourseScreen extends StatelessWidget {
               fontSize: 18,
               fontWeight: FontWeight.w700),
         ),
+        centerTitle: false,
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(
