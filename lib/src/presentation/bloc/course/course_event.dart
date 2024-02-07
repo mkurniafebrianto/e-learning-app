@@ -4,4 +4,3 @@ part of 'course_bloc.dart';
 sealed class CourseEvent {}
 
 class GetCoursesEvent extends CourseEvent {}
-class GetCourseDetailEvent extends CourseEvent {}

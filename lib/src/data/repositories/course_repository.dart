@@ -22,7 +22,7 @@ class CourseRepository {
       }
 
       return null;
-    } on DioException catch (e) {
+    } on DioException {
       return null;
     } catch (e) {
       return null;

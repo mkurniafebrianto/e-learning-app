@@ -1,21 +1,26 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_learning/src/domain/entities/banner_model.dart';
+import 'package:e_learning/src/domain/usecases/get_banner_usecase.dart';
 import 'package:meta/meta.dart';
-
-import '../../../data/repositories/banner_repository.dart';
 
 part 'banner_state.dart';
 
 class BannerCubit extends Cubit<BannerState> {
-  BannerCubit() : super(BannerInitial());
+  final GetBannersUseCase getBannersUseCase;
+
+  BannerCubit(this.getBannersUseCase) : super(BannerInitial());
 
   Future<void> getBanners() async {
-    emit(BannerLoading());
+    emit(GetBannerLoading());
 
-    final bannerRepository = BannerRepository();
+    final banners = await getBannersUseCase(
+      GetBannersParams(limitBanner: '5'),
+    );
 
-    final response = await bannerRepository.getBanners();
-
-    emit(BannerSuccess(bannerList: response.data ?? []));
+    if (banners != null) {
+      emit(GetBannerSuccess(bannerList: banners));
+    } else {
+      emit(GetBannerError(errorMessage: 'Server error'));
+    }
   }
 }

@@ -10,14 +10,17 @@ class BannersSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BannerCubit, BannerState>(
+      buildWhen: (previous, current) =>
+          (previous is GetBannerLoading) && (current is GetBannerSuccess) ||
+          (previous is GetBannerLoading) && (current is GetBannerError),
       builder: (context, state) {
-        if (state is BannerSuccess) {
+        if (state is GetBannerSuccess) {
           return HomeBannerList(
             banners: state.bannerList,
           );
-        } else if (state is BannerError) {
+        } else if (state is GetBannerError) {
           return Center(
-            child: Text(state.errorMessage ?? 'Something went wrong'),
+            child: Text(state.errorMessage),
           );
         } else {
           return const Center(

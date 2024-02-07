@@ -1,15 +1,20 @@
 import 'package:e_learning/src/core/values/colors.dart';
-import 'package:e_learning/src/presentation/screens/base_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignInLoginButton extends StatelessWidget {
   final bool isGoogleSignIn;
+  final VoidCallback onPressed;
 
-  const SignInLoginButton({super.key, required this.isGoogleSignIn});
+  const SignInLoginButton({
+    super.key,
+    required this.isGoogleSignIn,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
           isGoogleSignIn ? Colors.white : Colors.black,
@@ -19,10 +24,6 @@ class SignInLoginButton extends StatelessWidget {
             ? const MaterialStatePropertyAll(AppColors.background)
             : const MaterialStatePropertyAll(Colors.black),
       ),
-      onPressed: () {
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => BaseScreen()));
-      },
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

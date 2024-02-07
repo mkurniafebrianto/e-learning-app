@@ -11,7 +11,7 @@ class ExcerciseCubit extends Cubit<ExcerciseState> {
 
   ExcerciseCubit(this.getExcercisesUseCase) : super(ExcerciseInitial());
 
-  void getExcercises(String courseId) async {
+  Future<void> getExcercises(String courseId) async {
     emit(GetExcerciseLoading());
 
     final excercises = await getExcercisesUseCase(

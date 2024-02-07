@@ -3,15 +3,27 @@ import 'package:flutter/material.dart';
 import 'signin_login_button.dart';
 
 class LoginButtons extends StatelessWidget {
-  const LoginButtons({super.key});
+  final VoidCallback onGoogleSignInPressed;
+  final VoidCallback onAppleSignInPressed;
+
+  const LoginButtons(
+      {super.key,
+      required this.onGoogleSignInPressed,
+      required this.onAppleSignInPressed});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        SignInLoginButton(isGoogleSignIn: true),
-        SizedBox(height: 20),
-        SignInLoginButton(isGoogleSignIn: false),
+        SignInLoginButton(
+          isGoogleSignIn: true,
+          onPressed: onGoogleSignInPressed,
+        ),
+        const SizedBox(height: 20),
+        SignInLoginButton(
+          isGoogleSignIn: false,
+          onPressed: onAppleSignInPressed,
+        ),
       ],
     );
   }
