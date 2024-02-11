@@ -17,38 +17,6 @@ class BaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        elevation: 0,
-        surfaceTintColor: AppColors.background,
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Hai, Edo',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
-                ),
-                Text(
-                  'Selamat Datang',
-                  style: TextStyle(
-                    fontSize: 13,
-                  ),
-                ),
-              ],
-            ),
-            CircleAvatar(
-              backgroundImage: AssetImage('assets/images/edo selfie.png'),
-              radius: 20,
-            )
-          ],
-        ),
-      ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: FloatingActionButton(
@@ -85,7 +53,7 @@ class BaseScreen extends StatelessWidget {
                 ),
               ],
               backgroundColor: Colors.white,
-              height: 70,
+              height: 60,
               elevation: 0,
             );
           },
