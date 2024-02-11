@@ -5,7 +5,9 @@ import 'package:e_learning/src/data/repositories/excercise_repository.dart';
 import 'package:e_learning/src/domain/usecases/get_banner_usecase.dart';
 import 'package:e_learning/src/domain/usecases/get_courses_usecase.dart';
 import 'package:e_learning/src/domain/usecases/get_excercises_usecase.dart';
+import 'package:e_learning/src/domain/usecases/registration_usecase.dart';
 import 'package:e_learning/src/domain/usecases/sign_in_google_usecase.dart';
+import 'package:e_learning/src/domain/usecases/upload_file_usecase.dart';
 import 'package:e_learning/src/presentation/bloc/auth/auth_bloc.dart';
 import 'package:e_learning/src/presentation/bloc/banner/banner_cubit.dart';
 import 'package:e_learning/src/presentation/bloc/base/base_cubit.dart';
@@ -40,33 +42,40 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               ExcerciseCubit(GetExcercisesUseCase(ExcerciseRepository())),
         ),
-        BlocProvider(
-          create: (context) => AuthBloc(
-            SignInGoogleUseCase(
-              AuthRepository(
-                firebaseService: FirebaseService(),
+        BlocProvider(create: (context) {
+          AuthRepository repository =
+              AuthRepository(firebaseService: FirebaseService());
+
+          return AuthBloc(
+            SignInGoogleUseCase(repository),
+            RegistrationUseCase(repository),
+            UploadFileUseCase(repository),
+          );
+        })
+      ],
+      child: GestureDetector(
+        onTap: () {
+          /// to manage keyboard visibility
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'E Learning',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+            scaffoldBackgroundColor: AppColors.background,
+            navigationBarTheme: const NavigationBarThemeData(
+              labelTextStyle: MaterialStatePropertyAll(
+                TextStyle(
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600),
               ),
             ),
           ),
-        )
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'E Learning',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-          scaffoldBackgroundColor: AppColors.background,
-          navigationBarTheme: const NavigationBarThemeData(
-            labelTextStyle: MaterialStatePropertyAll(
-              TextStyle(
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600),
-            ),
-          ),
+          home: const SplashScreen(),
         ),
-        home: const SplashScreen(),
       ),
     );
   }
