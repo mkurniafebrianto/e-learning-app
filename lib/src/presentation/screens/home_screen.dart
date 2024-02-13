@@ -1,3 +1,4 @@
+import 'package:e_learning/src/core/styles.dart';
 import 'package:e_learning/src/core/values/colors.dart';
 import 'package:e_learning/src/presentation/bloc/banner/banner_cubit.dart';
 import 'package:e_learning/src/presentation/widgets/courses_section_widget.dart';
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColors.background,
         elevation: 0,
         surfaceTintColor: AppColors.background,
-        title: const Row(
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
@@ -42,20 +43,22 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   'Hai, Edo',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
+                  style: Styles.textStyle(
+                    textFont: 13,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
+                const SizedBox(height: 2),
                 Text(
                   'Selamat Datang',
-                  style: TextStyle(
-                    fontSize: 13,
+                  style: Styles.textStyle(
+                    textFont: 13,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ],
             ),
-            CircleAvatar(
+            const CircleAvatar(
               backgroundImage: AssetImage('assets/images/edo-selfie.png'),
               radius: 20,
             )
@@ -63,12 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         child: SingleChildScrollView(
+          clipBehavior: Clip.none,
           child: Column(
             children: [
               HomeBanner(),
-              SizedBox(height: 3),
+              SizedBox(height: 15),
               CoursesSectionWidget(),
               SizedBox(height: 15),
               BannersSectionWidget(),

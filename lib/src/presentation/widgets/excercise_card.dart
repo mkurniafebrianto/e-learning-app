@@ -1,3 +1,4 @@
+import 'package:e_learning/src/core/styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/excercise_model.dart';
@@ -22,7 +23,7 @@ class ExcerciseCard extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
               width: 53,
@@ -47,8 +48,18 @@ class ExcerciseCard extends StatelessWidget {
                   excercise.exerciseTitle ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
+                  style: Styles.textStyle(
+                    textFont: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
-                Text('${excercise.jumlahDone}/${excercise.jumlahSoal} Soal'),
+                Text(
+                  '${excercise.jumlahDone}/${excercise.jumlahSoal} Soal',
+                  style: Styles.textStyle(
+                      textFont: 10,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFF8E8E8E)),
+                ),
               ],
             ),
           ],

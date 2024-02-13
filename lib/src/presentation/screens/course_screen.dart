@@ -33,11 +33,15 @@ class CourseScreen extends StatelessWidget {
         elevation: 0,
         surfaceTintColor: AppColors.primary,
       ),
-      body: ListView.separated(
-        itemBuilder: (context, index) => CourseCard(course: courseList[index]),
-        separatorBuilder: (context, index) => const SizedBox(height: 12),
-        itemCount: courseList.length,
-        shrinkWrap: true,
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: ListView.separated(
+          itemBuilder: (context, index) =>
+              CourseCard(course: courseList[index]),
+          separatorBuilder: (context, index) => const SizedBox(height: 12),
+          itemCount: courseList.length,
+          shrinkWrap: true,
+        ),
       ),
     );
   }

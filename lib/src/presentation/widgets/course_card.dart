@@ -63,8 +63,10 @@ class CourseCard extends StatelessWidget {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                         fontSize: 12,
+                        color: Color(0xFF8E8E8E),
                       ),
                     ),
+                    const SizedBox(height: 2),
                     const LinearProgressIndicator(
                       color: AppColors.primary,
                     ),

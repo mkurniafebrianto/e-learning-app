@@ -8,4 +8,8 @@ class BaseCubit extends Cubit<BaseState> {
   void changeFeature(int index) {
     emit(BaseState(featureIndex: index));
   }
+
+  void resetFeature() {
+    emit(BaseState(featureIndex: 0));
+  }
 }

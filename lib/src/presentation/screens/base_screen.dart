@@ -6,8 +6,19 @@ import '../../core/values/colors.dart';
 import '../bloc/base/base_cubit.dart';
 import 'profile_screen.dart';
 
-class BaseScreen extends StatelessWidget {
-  BaseScreen({super.key});
+class BaseScreen extends StatefulWidget {
+  const BaseScreen({super.key});
+
+  @override
+  State<BaseScreen> createState() => _BaseScreenState();
+}
+
+class _BaseScreenState extends State<BaseScreen> {
+  @override
+  void initState() {
+    context.read<BaseCubit>().resetFeature();
+    super.initState();
+  }
 
   final List<Widget> screenBody = [
     const HomeScreen(),
@@ -38,7 +49,7 @@ class BaseScreen extends StatelessWidget {
           builder: (context, state) {
             return NavigationBar(
               onDestinationSelected: context.read<BaseCubit>().changeFeature,
-              indicatorColor: Colors.white30,
+              indicatorColor: Colors.black.withOpacity(0.1),
               selectedIndex: state.featureIndex,
               destinations: [
                 NavigationDestination(
@@ -52,9 +63,9 @@ class BaseScreen extends StatelessWidget {
                   label: 'Profile',
                 ),
               ],
-              backgroundColor: Colors.white,
-              height: 60,
+              height: 70,
               elevation: 0,
+              backgroundColor: Colors.white,
             );
           },
         ),
