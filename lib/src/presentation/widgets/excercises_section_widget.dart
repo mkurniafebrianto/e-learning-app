@@ -14,40 +14,43 @@ class ExcercisesSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 15,
-              vertical: 15,
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Pilih Paket Soal',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w700,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 15,
+              ),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Pilih Paket Soal',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),
-          ),
-          GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1.35,
-            ),
-            shrinkWrap: true,
-            physics: const ScrollPhysics(),
-            itemCount: excerciseList.length,
-            itemBuilder: (context, index) {
-              final excercise = excerciseList[index];
+            GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.35,
+              ),
+              shrinkWrap: true,
+              physics: const ScrollPhysics(),
+              itemCount: excerciseList.length,
+              itemBuilder: (context, index) {
+                final excercise = excerciseList[index];
 
-              return ExcerciseCard(excercise: excercise);
-            },
-          ),
-        ],
+                return ExcerciseCard(excercise: excercise);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

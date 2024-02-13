@@ -5,6 +5,7 @@ import 'package:e_learning/src/domain/entities/registration_model.dart';
 import 'package:e_learning/src/domain/usecases/upload_file_usecase.dart';
 import 'package:e_learning/src/presentation/bloc/auth/auth_bloc.dart';
 import 'package:e_learning/src/presentation/screens/base_screen.dart';
+import 'package:e_learning/src/presentation/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,15 +57,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              'Yuk isi data diri',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-              ),
+          title: const Text(
+            'Yuk isi data diri',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
             ),
           ),
           centerTitle: false,
@@ -76,6 +74,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               bottom: Radius.circular(30),
             ),
           ),
+          leading: IconButton(
+              onPressed: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  )),
+              icon: const Icon(Icons.arrow_back_sharp)),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),

@@ -49,6 +49,7 @@ class HomeCourseList extends StatelessWidget {
         ListView.separated(
           shrinkWrap: true,
           itemCount: 3,
+          physics: const ScrollPhysics(),
           separatorBuilder: (context, index) => const SizedBox(height: 12),
           itemBuilder: (context, index) {
             final course = courses[index];
