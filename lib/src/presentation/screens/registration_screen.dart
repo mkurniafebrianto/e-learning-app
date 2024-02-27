@@ -9,6 +9,7 @@ import 'package:e_learning/src/presentation/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
 const List<String> listClass = [
@@ -42,16 +43,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           (previous is RegistrationLoading && current is RegistrationSuccess),
       listener: (context, state) {
         if (state is UploadFilePicSuccess) {
-          print('File uploaded to ${state.downloadUrl}');
+          debugPrint('File uploaded to ${state.downloadUrl}');
           _callRegisterEvent();
         }
 
         if (state is RegistrationSuccess) {
-          print('Register success!');
+          debugPrint('Register success!');
+          Fluttertoast.showToast(
+            msg: "Registration success",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+          );
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => BaseScreen(),
+                builder: (context) => const BaseScreen(),
               ));
         }
       },

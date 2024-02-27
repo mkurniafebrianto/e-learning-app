@@ -5,8 +5,10 @@ import 'package:e_learning/src/data/repositories/excercise_repository.dart';
 import 'package:e_learning/src/domain/usecases/get_banner_usecase.dart';
 import 'package:e_learning/src/domain/usecases/get_courses_usecase.dart';
 import 'package:e_learning/src/domain/usecases/get_excercises_usecase.dart';
+import 'package:e_learning/src/domain/usecases/get_user_usecase.dart';
 import 'package:e_learning/src/domain/usecases/registration_usecase.dart';
 import 'package:e_learning/src/domain/usecases/sign_in_google_usecase.dart';
+import 'package:e_learning/src/domain/usecases/sign_out_google_usecase.dart';
 import 'package:e_learning/src/domain/usecases/upload_file_usecase.dart';
 import 'package:e_learning/src/presentation/bloc/auth/auth_bloc.dart';
 import 'package:e_learning/src/presentation/bloc/banner/banner_cubit.dart';
@@ -50,6 +52,8 @@ class MyApp extends StatelessWidget {
             SignInGoogleUseCase(repository),
             RegistrationUseCase(repository),
             UploadFileUseCase(repository),
+            SignOutGoogleUseCase(repository),
+            GetUserUseCase(repository),
           );
         })
       ],
