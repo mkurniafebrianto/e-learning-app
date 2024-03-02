@@ -8,6 +8,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+final _firebase = FirebaseAuth.instance;
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -20,17 +22,17 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 1)).then((value) {
       // check is user signed in w google
-      if (FirebaseAuth.instance.currentUser?.uid != null) {
+      if (checkUserSignInWithGoogle() != null) {
         // check is user registered
         if (checkUserRegis()) {
-          // if user already registered
+          // if user already registered, navigate to dashboard
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => const BaseScreen(),
               ));
         } else {
-          // if not
+          // if not, navigate to register screen
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -59,8 +61,12 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
+  String? checkUserSignInWithGoogle() {
+    return _firebase.currentUser?.uid;
+  }
+
   bool checkUserRegis() {
-    String? email = FirebaseAuth.instance.currentUser?.email;
+    String? email = _firebase.currentUser?.email;
 
     if (email != null) {
       context.read<AuthBloc>().add(GetUserEvent(email: email));

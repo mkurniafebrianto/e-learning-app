@@ -20,10 +20,8 @@ class LoginScreen extends StatelessWidget {
               (current is SignInWithGoogleSuccess) ||
           (previous is SignInWithGoogleLoading) &&
               (current is SignInWithGoogleError) ||
-          (previous is GetUserLoading) &&
-              (current is GetUserSuccess) ||
-          (previous is GetUserLoading) &&
-              (current is GetUserError),
+          (previous is GetUserLoading) && (current is GetUserSuccess) ||
+          (previous is GetUserLoading) && (current is GetUserError),
       listener: (context, state) {
         if (state is SignInWithGoogleSuccess) {
           Fluttertoast.showToast(
@@ -42,18 +40,18 @@ class LoginScreen extends StatelessWidget {
         }
 
         if (state is GetUserSuccess) {
-          if (state.userData == null) {
+          if (state.userData != null) {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const RegistrationScreen(),
+                builder: (context) => const BaseScreen(),
               ),
             );
           } else {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const BaseScreen(),
+                builder: (context) => const RegistrationScreen(),
               ),
             );
           }
@@ -99,9 +97,23 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-void _onGoogleSignInPressed(BuildContext context) {
-  context.read<AuthBloc>().add(SignInWithGoogleEvent());
-  context
-      .read<AuthBloc>()
-      .add(GetUserEvent(email: 'mkurniafebrianto@gmail.com'));
+void _onGoogleSignInPressed(BuildContext context) async {
+  final authBloc = context.read<AuthBloc>();
+
+  // Initiate sign-in process
+  authBloc.add(SignInWithGoogleEvent());
+
+  // Wait for sign-in to complete
+  await for (final state in authBloc.stream) {
+    if (state is SignInWithGoogleSuccess) {
+      // Sign-in successful, proceed with GetUserEvent
+      authBloc.add(GetUserEvent(email: 'nanda@gmail.com'));
+      break; // Exit the for loop
+    } else if (state is SignInWithGoogleError) {
+      // Handle any errors during sign-in
+      debugPrint('Auth error: ${state.errorMessage}');
+      // Display error message to user or handle appropriately
+      break; // Exit the for loop
+    }
+  }
 }

@@ -23,7 +23,11 @@ final class SignInWithGoogleError extends AuthState {
 // sign out state
 final class SignOutFromGoogleLoading extends AuthState {}
 
-final class SignOutFromGoogleSuccess extends AuthState {}
+final class SignOutFromGoogleSuccess extends AuthState {
+  final bool signOutStatus;
+
+  SignOutFromGoogleSuccess({required this.signOutStatus});
+}
 
 final class SignOutFromGoogleError extends AuthState {
   final String errorMessage;

@@ -42,9 +42,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(SignOutFromGoogleLoading());
 
         try {
-          await signOutGoogleUseCase(null);
+          final status = await signOutGoogleUseCase(null);
 
-          emit(SignOutFromGoogleSuccess());
+          emit(SignOutFromGoogleSuccess(signOutStatus: status));
         } catch (e) {
           emit(SignOutFromGoogleError(errorMessage: '$e'));
         }
