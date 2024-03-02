@@ -29,6 +29,17 @@ class FirebaseService {
     }
   }
 
+  Future<bool> signOutFromGoogle() async {
+    try {
+      // Sign out from Firebase Auth
+      await FirebaseAuth.instance.signOut();
+      await GoogleSignIn().signOut();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   Future<String?> uploadFile(
       {required String fileName, required Uint8List fileByte}) async {
     try {

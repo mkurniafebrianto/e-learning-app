@@ -93,6 +93,10 @@ flutter:
           weight: 500
         - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 600
+    - family: SF Pro Display
+      fonts:
+        - asset: assets/fonts/SFProDisplay.ttf
+          weight: 500
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

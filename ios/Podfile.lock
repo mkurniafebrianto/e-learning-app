@@ -13,7 +13,7 @@ PODS:
   - Firebase/Storage (10.20.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 10.20.0)
-  - firebase_auth (4.17.3):
+  - firebase_auth (4.17.4):
     - Firebase/Auth (= 10.20.0)
     - firebase_core
     - Flutter
@@ -131,7 +131,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   Firebase: 10c8cb12fb7ad2ae0c09ffc86cd9c1ab392a0031
-  firebase_auth: 37eb4a237d7407336d9dc3b739e81153c5077d70
+  firebase_auth: 29a10d4129d53aa690c10dbd838ed1a059ef0c9b
   firebase_core: a46c312d8bae4defa3d009b2aa7b5b413aeb394e
   firebase_storage: 5007be227e54a46f260b6040a23b4fdc8ca1c5c5
   FirebaseAppCheckInterop: 69fc7d8f6a1cbfa973efb8d1723651de30d12525
@@ -142,7 +142,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 43c1788eaeee9d1b97caaa751af567ce11010d00
   FirebaseStorage: 8505bae8ac6662474b5b50e07759fb2765c15746
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  fluttertoast: fafc4fa4d01a6a9e4f772ecd190ffa525e9e2d9c
+  fluttertoast: 31b00dabfa7fb7bacd9e7dbee580d7a2ff4bf265
   google_sign_in_ios: 1bfaf6607b44cd1b24c4d4bc39719870440f9ce1
   GoogleSignIn: b232380cf495a429b8095d3178a8d5855b42e842
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
@@ -155,4 +155,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.15.2
