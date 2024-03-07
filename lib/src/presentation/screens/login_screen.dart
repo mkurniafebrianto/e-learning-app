@@ -3,6 +3,7 @@ import 'package:e_learning/src/presentation/bloc/auth/auth_bloc.dart';
 import 'package:e_learning/src/presentation/screens/base_screen.dart';
 import 'package:e_learning/src/presentation/screens/registration_screen.dart';
 import 'package:e_learning/src/presentation/widgets/login_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -40,18 +41,18 @@ class LoginScreen extends StatelessWidget {
         }
 
         if (state is GetUserSuccess) {
-          if (state.userData != null) {
+          if (state.userData.iduser == "0") {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const BaseScreen(),
+                builder: (context) => const RegistrationScreen(),
               ),
             );
           } else {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const RegistrationScreen(),
+                builder: (context) => const BaseScreen(),
               ),
             );
           }
@@ -107,7 +108,8 @@ void _onGoogleSignInPressed(BuildContext context) async {
   await for (final state in authBloc.stream) {
     if (state is SignInWithGoogleSuccess) {
       // Sign-in successful, proceed with GetUserEvent
-      authBloc.add(GetUserEvent(email: 'nanda@gmail.com'));
+      authBloc.add(
+          GetUserEvent(email: FirebaseAuth.instance.currentUser?.email ?? ''));
       break; // Exit the for loop
     } else if (state is SignInWithGoogleError) {
       // Handle any errors during sign-in

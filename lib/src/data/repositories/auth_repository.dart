@@ -4,7 +4,6 @@ import 'package:e_learning/src/data/firebase/firebase_service.dart';
 import 'package:e_learning/src/data/network/http_config.dart';
 import 'package:e_learning/src/domain/entities/registration_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
 import '../../domain/entities/user_model.dart';
 
@@ -43,8 +42,8 @@ class AuthRepository {
       },
     );
 
-    debugPrint('response code: ${response.statusCode}');
-    debugPrint('data: ${response.data}');
+    print('response code: ${response.statusCode}');
+    print('data: ${response.data}');
 
     // 200 == success
     if (response.statusCode == 200) {

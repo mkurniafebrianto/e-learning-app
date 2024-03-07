@@ -50,7 +50,7 @@ final class RegistrationError extends AuthState {
 final class GetUserLoading extends AuthState {}
 
 final class GetUserSuccess extends AuthState {
-  final UserData? userData;
+  final UserData userData;
 
   GetUserSuccess({required this.userData});
 }

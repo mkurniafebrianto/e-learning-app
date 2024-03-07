@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:e_learning/src/core/values/colors.dart';
 import 'package:e_learning/src/domain/entities/registration_model.dart';
-import 'package:e_learning/src/domain/usecases/upload_file_usecase.dart';
+// import 'package:e_learning/src/domain/usecases/upload_file_usecase.dart';
 import 'package:e_learning/src/presentation/bloc/auth/auth_bloc.dart';
 import 'package:e_learning/src/presentation/screens/base_screen.dart';
 import 'package:e_learning/src/presentation/screens/login_screen.dart';
@@ -349,7 +349,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   width: double.infinity,
                   height: 50,
                   child: FilledButton(
-                    onPressed: () async {
+                    onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BaseScreen()),
+                    ),
+
+                    /* () async {
                       if (_selectedImage != null) {
                         /// get .jpg extension
                         final String fileExt =
@@ -369,7 +375,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       } else {
                         _callRegisterEvent();
                       }
-                    },
+                    }, */
                     style: const ButtonStyle(
                         backgroundColor:
                             MaterialStatePropertyAll(AppColors.primary)),

@@ -31,7 +31,7 @@ class ProfileHeaderWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Fajrin Arrahman',
+                      'M. Kurnia Febrianto',
                       style: Styles.textStyle(
                         textFont: 20,
                         fontWeight: FontWeight.w400,
@@ -39,7 +39,7 @@ class ProfileHeaderWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'SMAN 1 Kediri',
+                      'SMAN 8 Yogyakarta',
                       style: Styles.textStyle(
                         textFont: 14,
                         fontWeight: FontWeight.w400,

@@ -80,6 +80,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(UploadFilePicLoading());
 
         final downloadUrl = await uploadFileUseCase(event.params);
+
         if (downloadUrl != null) {
           emit(UploadFilePicSuccess(downloadUrl: downloadUrl));
         } else {

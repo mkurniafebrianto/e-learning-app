@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Hai, Edo',
+                  'Hai, M Kurnia Febrianto',
                   style: Styles.textStyle(
                     textFont: 13,
                     fontWeight: FontWeight.w700,

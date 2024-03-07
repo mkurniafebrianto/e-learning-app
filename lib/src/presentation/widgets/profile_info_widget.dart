@@ -43,7 +43,7 @@ class ProfileInfoWidget extends StatelessWidget {
               ),
             ),
             Text(
-              'Muhammad Ali Topan',
+              'M. Kurnia Febrianto',
               style: Styles.textStyle(
                 textFont: 14,
                 fontWeight: FontWeight.w400,
@@ -58,7 +58,7 @@ class ProfileInfoWidget extends StatelessWidget {
               ),
             ),
             Text(
-              'helloaltop@gmail.com',
+              'mkurniafebrianto@gmail.com',
               style: Styles.textStyle(
                 textFont: 14,
                 fontWeight: FontWeight.w400,
@@ -103,7 +103,7 @@ class ProfileInfoWidget extends StatelessWidget {
               ),
             ),
             Text(
-              'SMAN 1 Kediri',
+              'SMAN 8 Yogyakarta',
               style: Styles.textStyle(
                 textFont: 14,
                 fontWeight: FontWeight.w400,
