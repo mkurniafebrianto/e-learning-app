@@ -9,6 +9,10 @@ class CourseCard extends StatelessWidget {
 
   const CourseCard({super.key, required this.course});
 
+  double calculateProgress() {
+    return (course.jumlahDone! / course.jumlahMateri!) * 100;
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -57,9 +61,9 @@ class CourseCard extends StatelessWidget {
                         fontSize: 12,
                       ),
                     ),
-                    const Text(
-                      '0/50 Paket latihan soal',
-                      style: TextStyle(
+                    Text(
+                      '${course.jumlahDone}/${course.jumlahMateri} Paket latihan soal',
+                      style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                         fontSize: 12,
@@ -67,7 +71,11 @@ class CourseCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 2),
-                    const LinearProgressIndicator(
+                    LinearProgressIndicator(
+                      value: course.jumlahMateri != null &&
+                              course.jumlahMateri != 0
+                          ? calculateProgress()
+                          : 0,
                       color: AppColors.primary,
                     ),
                   ],
